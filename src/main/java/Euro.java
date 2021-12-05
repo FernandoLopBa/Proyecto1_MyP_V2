@@ -8,7 +8,12 @@ public class Euro implements Divisa{
     }
 
     @Override
-    public float getEquialencia(float peso) {
+    public float getEquivalencia(float peso) {
         return peso/equivalencia;
+    }
+
+    @Override
+    public String getEquivalenciaCadena(float peso){
+        return String.format("€ %.2f EURO", getEquivalencia(peso));
     }
 }
