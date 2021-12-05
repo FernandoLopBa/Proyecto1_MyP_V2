@@ -45,6 +45,37 @@ public abstract class Sucursal implements Sujeto{
 
     }
 
+    public abstract void creaDescuentos();
+
+    public void crearDescuentos(String departamento){
+        Iterator<Producto> it = catalogo.values().iterator();
+        while(it.hasNext()){
+            Producto p = it.next();
+            int descuento;
+            if(p.getDepartamento().getDepartamento().equals(departamento)){
+                descuento = (int)(Math.random()*3);
+                if(descuento % 3 == 0){
+                    descuento = (int)(Math.random()*10+1)*5;
+                    p.setDescuento(descuento);
+                }
+            }else{
+                descuento = (int)(Math.random()*3);
+                if(descuento % 7 == 0){
+                    descuento = (int)(Math.random()*10+1)*5;
+                    p.setDescuento(descuento);
+                }
+            }
+        }
+    }
+
+    public void reiiciaDescuentos(){
+        Iterator<Producto> it = catalogo.values().iterator();
+        while(it.hasNext()){
+            Producto p = it.next();
+            p.setDescuento(0);
+        }
+    }
+
     public void cargaCheems(){
     	carga(new CatalogoCheems());
     }
@@ -54,21 +85,20 @@ public abstract class Sucursal implements Sujeto{
     }
 
 
-    public String comprar(Scanner sc, CuentaCliente cliente){
+    public String comprar(CuentaCliente cliente){
         System.out.println(idioma.comprar());
-        //Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int cb = sc.nextInt();
         do{
             Producto p = busca(cb);
             cliente.agrega(p);
             cb = sc.nextInt();
         }while(cb!=0);
-        sc.close();
-        boolean bandera = cliente.paga(sc); //regresa un booleano
+        //sc.close();
+        boolean bandera = cliente.paga(getDivisa()); //regresa un booleano
         return completarCompra(bandera);
-        
-
     }
+
 
     public String saludar(CuentaCliente cliente){
         return idioma.saludar(cliente);
@@ -128,4 +158,17 @@ public abstract class Sucursal implements Sujeto{
         clientes.remove(cliente);
     }
 
-}
+    public void notifica(){
+        Iterator<Producto> it = catalogo.values().iterator();
+        while(it.hasNext()){
+            Producto p = it.next();
+            if(p.getDescuento() > 0){
+                for(CuentaCliente c : clientes){
+                    System.out.println(c.getNombreReal() + ", tenemos ofertas en "
+                    + p.getNombre() + " del " + p.getDescuento() + "%%");
+                }
+            }
+        }
+    }
+
+}n

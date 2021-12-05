@@ -9,14 +9,18 @@ public class CuentaCliente{
     private int telefono;
     private String pais;
     private String direccion;
-    private double saldo;
+
+    private float saldo;
 
     private String oferta = "";
 
-    private Tarjeta tarjeta;
+    //private Tarjeta tarjeta;
+
+    private String noCuenta;
     private Carrito carrito;
 
-    public CuentaCliente(Cliente c, String nombreUsuario, String contrasena){
+    public CuentaCliente(Cliente c, String nombreUsuario, String contrasena, 
+                        String noCuenta, float saldo){
         this.nombreReal = c.getNombre();
         this.telefono = c.getTelefono();
         this.pais= c.getPais();
@@ -24,13 +28,15 @@ public class CuentaCliente{
         
         this.nombreReal = nombreUsuario;
         this.contrasena = contrasena;
+        this.noCuenta = noCuenta;
+        this.saldo = saldo;
+
         carrito = new Carrito();
     }
 
 
-    public void vincula(Tarjeta tarjeta){
-        this.tarjeta = tarjeta;
-        this.saldo = tarjeta.getDinero();
+    public String getNoCuenta(){
+        return noCuenta;
     }
 
 
@@ -73,8 +79,12 @@ public class CuentaCliente{
         return direccion;
     }
 
-    public double getSaldo(){
+    public float getSaldo(){
         return saldo;
+    }
+
+    public void setSaldo(float saldo){
+        this.saldo = saldo;
     }
 
     public String mostrarCarro(){
@@ -88,17 +98,26 @@ public class CuentaCliente{
 
     }
 
-    public boolean paga(Scanner sc){
-        int total = 0;
+    public boolean paga(Divisa divisa){
+        float real = divisa.getEquivalencia(saldo);
+        System.out.println("$"+real);
+        //el precio total de las cosas
+        float total = 0;
         Iterator<Producto> it = carrito.getIterator();
         while(it.hasNext()){
             Producto p = it.next();
             total+=p.getPrecio();
         }
-        InterfazBanco proxy = new ClienteProxy(tarjeta);
-        boolean bandera = proxy.saca(sc, total);
+        //el precio lo convertimos a la divisa
+        float res = divisa.getEquivalencia(total);
+        InterfazProxy proxy = new Proxy(new Tarjeta());
+        //regresa verdadero si la compra fue exitosa
+        System.out.println("Total"+res);
+        boolean bandera = proxy.saca(this, res);
+        System.out.println("$"+real);
         return bandera;
     }   
+
 
     public boolean checaContrasenia(String intento){
 	return contrasena.equals(intento);
