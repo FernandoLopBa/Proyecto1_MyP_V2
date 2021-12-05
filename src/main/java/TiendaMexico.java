@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
  /**
  * Representa la sucursal en Mexico
  * @author Bernal Marquez Erick
@@ -9,12 +9,19 @@ import java.util.ArrayList;
 public class TiendaMexico extends Sucursal{
 
    public TiendaMexico() {
-        idioma = new English();
-		moneda = new DollarUSD();
-		//TODO Auto-generated constructor stub
+        idioma = new Espanol();
+		moneda = new Peso();
+		super.carga(new CatalogoCheems());
 	}
     
+    @Override
+    public Divisa getDivisa(){
+        return moneda;
+    }
+
 	public void aplicaDesc(){
         
     }
+
+	public void notifica(){}
 }

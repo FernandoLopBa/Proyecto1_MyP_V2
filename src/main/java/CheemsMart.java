@@ -11,10 +11,10 @@ public class CheemsMart {
     
     /**Creacion de las cuentas */
     private static CuentaCliente cuentaRosa = new CuentaCliente(rosa, 
-    "Tsunakidevilla", "contrsenadeCuenta");
+    "Tsunakidevilla", "contrasenadeCuenta");
     private static CuentaCliente cuentaArturo = new CuentaCliente(arturo,
     "R2D2", "cuenta123");
-    private static CuentaCliente cuetnaRicardo = new CuentaCliente(ricardo, 
+    private static CuentaCliente cuentaRicardo = new CuentaCliente(ricardo, 
     "Ricchie", "misterio123");
     /**Creacion de las tarjetas */
     private static Tarjeta tarjetaRosa = new Tarjeta(10500, "clave");    
@@ -24,7 +24,7 @@ public class CheemsMart {
     private static void vincula(){
         cuentaRosa.vincula(tarjetaRosa);
         cuentaArturo.vincula(tarjetaArturo);
-        cuetnaRicardo.vincula(tarjetaRicardo);
+        cuentaRicardo.vincula(tarjetaRicardo);
     }
 
         
@@ -32,17 +32,21 @@ public class CheemsMart {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         int eleccion;
-        CuentaCliente cliente;
-        Sucursal sucursal;
+        CuentaCliente cliente = null;
+        Sucursal sucursal = null;
         
         vincula();
         
         do{
-            System.out.println("¡¡¡BIENVENID@ A CHEEMSMART!!!");
+            System.out.println("\n¡¡¡BIENVENID@ A CHEEMSMART!!!\n");
             System.out.println("Le pedimos que se identifique");
-            System.out.printf("Elija su usuario: 1) Rosa\t2) Arturo\t3) Ricardo");
+            System.out.println("Elija su usuario/ Pick a user:\t0) Terminar/Finish");
+            System.out.println("\t\t\t\t1) Rosa \t2) Arturo\t3) Ricardo");
+	    System.out.printf("Elección/ Your choice: ");
             eleccion = in.nextInt();
             switch(eleccion){
+                case 0:
+                    System.exit(0);
                 case 1:
                     cliente = cuentaRosa;
                     break;
@@ -50,11 +54,11 @@ public class CheemsMart {
                     cliente = cuentaArturo;
                     break;
                 case 3:
-                    cliente = cuetnaRicardo;
+                    cliente = cuentaRicardo;
                     break;
                 default:
                     System.out.println("Cliente no identificado");
-                    System.exit(1);
+                    System.exit(0);
             }
 
             if(cliente.getPais() == "Mexico")
@@ -65,29 +69,45 @@ public class CheemsMart {
                 sucursal = new TiendaUSA();
             else{
                 System.out.println("Lo sentimos, no tenemos sucursal disponible");
-                System.exit(1);
+                System.exit(0);
             }
+        
+        System.out.println(sucursal.saludar(cliente));
+        String intento;
+        for(int i = 0; i < 3; i++){
+	        System.out.printf(sucursal.introduzcaContrasena());
+            intento = in.next();
+            if(!cliente.checaContrasenia(intento)){
+                System.out.println(sucursal.fallarContrasena(2-i));
+                if(i == 2)
+                    System.exit(0);
+            }else
+                break;
+        }
+
+	    sucursal.cargaCheems();
             
-            while(true){
-                System.out.println("¿Qué desea hacer?\t0) Terminar");
-                System.out.println("\t\t\t1) Ver catálogo\t2) Comprar")
-                System.out.printf("Usted desea: ");
+            while(eleccion != 0){
+                System.out.println(sucursal.menuInicio());
+                System.out.print(sucursal.eleccion());
                 eleccion = in.nextInt();
                 switch(eleccion){
                     case 1: 
                         System.out.println(sucursal.getCatalogo());
                         break;
                     case 2:
-                        comprar();
+                        sucursal.comprar(cliente);
+
                         break;
                     case 0:
-                        terminar();
                         break;
                     default:
-                        System.out.println("Opción no válida");
-                        System.exit(1);
+                        System.out.println(sucursal.eleccionInvalida());
+                        System.exit(0);
                 }
             }
+            System.out.println(sucursal.despedir(cliente)+"\n");
+            eleccion = 1;
         }while(eleccion != 0);
     }
 }

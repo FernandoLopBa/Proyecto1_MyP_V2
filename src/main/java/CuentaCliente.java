@@ -1,5 +1,5 @@
 import java.util.Iterator;
-
+import java.util.Scanner;
 public class CuentaCliente{
 
     private String nombreUsuario;
@@ -88,7 +88,7 @@ public class CuentaCliente{
 
     }
 
-    public boolean paga(){
+    public boolean paga(Scanner sc){
         int total = 0;
         Iterator<Producto> it = carrito.getIterator();
         while(it.hasNext()){
@@ -96,8 +96,12 @@ public class CuentaCliente{
             total+=p.getPrecio();
         }
         InterfazBanco proxy = new ClienteProxy(tarjeta);
-        return proxy.saca(total);
+        boolean bandera = proxy.saca(sc, total);
+        return bandera;
     }   
 
+    public boolean checaContrasenia(String intento){
+	return contrasena.equals(intento);
+    }
     
 }

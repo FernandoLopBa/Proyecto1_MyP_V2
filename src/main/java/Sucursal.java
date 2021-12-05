@@ -2,6 +2,7 @@ import java.util.LinkedList;
 import java.lang.Math;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Scanner;
 /**
  * Representa la sucursal de tiendas Cheemsmart
  * @author Bernal Marquez Erick
@@ -14,6 +15,7 @@ public abstract class Sucursal implements Sujeto{
     //los clientes de la sucursal
     protected LinkedList<CuentaCliente> clientes;    
     protected Hashtable<Integer, Producto> catalogo;
+
     protected int descuento;
 
     protected Idioma idioma;
@@ -21,13 +23,14 @@ public abstract class Sucursal implements Sujeto{
 
     private static int[] fecha = {2, 11, 2021};
 
+    public abstract Divisa getDivisa();
 
     public String getCatalogo(){
         String res = "";
         Iterator<Producto> it = catalogo.values().iterator();
         while(it.hasNext()){
             Producto p = it.next();
-            res+=p.getDescripcion();
+            res+=p.mostrarProducto(getDivisa())+"\n";
         }
         return res;
     }
@@ -42,8 +45,29 @@ public abstract class Sucursal implements Sujeto{
 
     }
 
+    public void cargaCheems(){
+    	carga(new CatalogoCheems());
+    }
+
     public Producto busca(int barras){
         return catalogo.get(barras);
+    }
+
+
+    public String comprar(Scanner sc, CuentaCliente cliente){
+        System.out.println(idioma.comprar());
+        //Scanner sc = new Scanner(System.in);
+        int cb = sc.nextInt();
+        do{
+            Producto p = busca(cb);
+            cliente.agrega(p);
+            cb = sc.nextInt();
+        }while(cb!=0);
+        sc.close();
+        boolean bandera = cliente.paga(sc); //regresa un booleano
+        return completarCompra(bandera);
+        
+
     }
 
     public String saludar(CuentaCliente cliente){
@@ -56,6 +80,26 @@ public abstract class Sucursal implements Sujeto{
 
     public String despedir(CuentaCliente cliente){
         return idioma.despedir(cliente);
+    }
+
+    public String introduzcaContrasena(){
+        return idioma.introduzcaContasena();
+    }
+
+    public String fallarContrasena(int intentos){
+        return idioma.fallarContrasena(intentos);
+    }
+
+    public String menuInicio(){
+        return idioma.menuInicio();
+    }
+
+    public String eleccion(){
+        return idioma.eleccion();
+    }
+
+    public String eleccionInvalida(){
+        return idioma.eleccionInvalida();
     }
 
     public String fechaEntrega(){
@@ -83,6 +127,5 @@ public abstract class Sucursal implements Sujeto{
     public void elimina(CuentaCliente cliente){
         clientes.remove(cliente);
     }
-
 
 }

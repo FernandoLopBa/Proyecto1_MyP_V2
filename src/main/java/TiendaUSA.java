@@ -1,4 +1,4 @@
- import java.util.ArrayList;
+
  /**
  * Representa la sucursal en USA
  * @author Bernal Marquez Erick
@@ -13,7 +13,12 @@ public class TiendaUSA extends Sucursal{
 		moneda = new DollarUSD();
 		super.carga(new CatalogoCheems());
 	}
-    
+  
+    @Override
+    public Divisa getDivisa(){
+        return moneda;
+    }
+
 	public void aplicaDesc(){
         
     }

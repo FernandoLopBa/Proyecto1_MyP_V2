@@ -34,17 +34,17 @@ public class Producto{
         return departamento;
     }
 
-    public String toString(){
-        return "- "+getCB()+"\t\t"+getNombre()+"\t\t"+
-        getDescripcion()+"\t\t"+getPrecio()+"\t"+getDepartamento().getDepartamento()+"\n";
-                                            //regresa el departamento, regresa el String
-    }
-
     public void setPrecio(int precio){
         this.precio = precio;
     }
 
     public String getNombreDepartamento(){
         return departamento.getDepartamento();
+    }
+
+    public String mostrarProducto(Divisa divisa){
+	    return String.format("-%s\t%s\t%s\t%s\t%s",
+		getCB(), getNombre(), getDescripcion(), 
+        divisa.getEquivalenciaCadena(getPrecio()), departamento.getDepartamento());
     }
 }

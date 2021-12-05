@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Tarjeta implements InterfazBanco{
 
     private double dinero;
@@ -8,9 +9,10 @@ public class Tarjeta implements InterfazBanco{
         this.clave = clave;
     }
     
-    public boolean saca(double monto){
+    public boolean saca(Scanner sc, double monto){
         if(dinero<monto) return false;
         dinero -= monto;
+        sc.close();
         return true;
     }
 

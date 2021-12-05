@@ -8,14 +8,15 @@ public class ClienteProxy implements InterfazBanco{
         this.tarjeta = tarjeta;
     }
 
-    public boolean saca(double monto){
-        Scanner sc = new Scanner(System.in);
+    public boolean saca(Scanner sc, double monto){
         System.out.print("Ingresa la clave de tu tarjeta: ");
-        String clave = sc.nextLine();
+
+        String clave = sc.next();
+
         if(tarjeta.getContrasena().equals(clave)){
-            sc.close();
-            return tarjeta.saca(monto);
             
+            return tarjeta.saca(sc, monto);
+
         }        
         System.out.println("Emergencia 911 hombre con ataque cardiaco");
         sc.close();
