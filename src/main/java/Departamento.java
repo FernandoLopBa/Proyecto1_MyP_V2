@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 public abstract class Departamento{
     public abstract String getDepartamento();
 
