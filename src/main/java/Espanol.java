@@ -8,6 +8,32 @@ public class Espanol implements Idioma{
     }
 
     @Override
+    public String menuInicio(){
+	return "¿Qué acción desea realizar?\t0) Terminar\n" + 
+		"\t\t\t\t1) Ver catálogo\t2) Comprar";
+    }
+
+    @Override
+    public String eleccion(){
+	return "Introduzca su elección: ";
+    }
+
+    @Override
+    public String introduzcaContasena(){
+	return "Introduzca contraseña de la cuenta: ";
+    }
+
+    @Override
+    public String fallarContrasena(int intentos){
+	return "Contraseña incorrecta.\nQuedan " + intentos + " intentos";
+    }
+
+    @Override
+    public String eleccionInvalida(){
+	return "Opción no válida...";
+    }
+    
+    @Override
     public String completarCompra(boolean correcta) {
         if(correcta)
             return "Compra completada correctamente!!!";
@@ -33,5 +59,10 @@ public class Espanol implements Idioma{
     @Override
     public String mostrarOfertas(LinkedList<Producto> ofertas) {
         return "";
+    }
+
+    @Override
+    public String comprar(){
+        return "Escoge tus productos: ";
     }
 }
