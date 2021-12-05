@@ -1,5 +1,3 @@
-package main.java;
-
 public interface Sujeto{
     public void registrar(CuentaCliente cuenta);
 

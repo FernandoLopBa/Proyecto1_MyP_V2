@@ -1,26 +1,28 @@
-package main.java;
+public class Tarjeta implements InterfazBanco{
 
-public class Tarjeta{
-
-    private String nombre;
-    private String usuario;
-    private String contrasena;
     private double dinero;
+    private String clave;
 
-    public String getDinero(){
-        return nombre;
+    public Tarjeta(double dinero, String clave){
+        this.dinero= dinero;
+        this.clave = clave;
+    }
+    
+    public boolean saca(double monto){
+        if(dinero<monto) return false;
+        dinero -= monto;
+        return true;
     }
 
-    public String getUsuario(){
-        return usuario;
+    public void mete(double monto){
+        dinero += monto;
     }
 
     public String getContrasena(){
-        return contrasena;
+        return clave;
     }
-
-    public void saca(double monto){
-        this.dinero = monto;
+    
+    public double getDinero(){
+        return dinero;
     }
-
 }

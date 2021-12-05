@@ -1,5 +1,3 @@
-package main.java;
-
 import java.util.LinkedList;
 
 public class English implements Idioma{
@@ -18,7 +16,7 @@ public class English implements Idioma{
     }
 
     @Override
-    public String depedir(CuentaCliente cliente) {
+    public String despedir(CuentaCliente cliente) {
         return "Come back soon, " + cliente.getNombreReal() + " :)";
     }
 

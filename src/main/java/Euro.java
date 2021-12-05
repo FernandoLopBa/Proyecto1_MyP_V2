@@ -1,5 +1,3 @@
-package main.java;
-
 public class Euro implements Divisa{
 
     private static float equivalencia = (float)24.06;

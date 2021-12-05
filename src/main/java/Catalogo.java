@@ -1,4 +1,3 @@
-package main.java;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -25,7 +24,16 @@ public class Catalogo{
 
     public Iterator<Producto> getIterator(){
         return productos.iterator();
-        
+    }
+
+    public String toString(){
+        String res = "";
+        Iterator<Producto> it = getIterator();
+        while(it.hasNext()){
+            Producto p = it.next();
+            res+=p.toString();
+        }
+        return res;
     }
     
 }

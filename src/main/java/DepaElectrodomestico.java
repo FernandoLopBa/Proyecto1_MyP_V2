@@ -1,5 +1,3 @@
-package main.java;
-
 public class DepaElectrodomestico extends Departamento{
 
     public static String nombre = "Electrónica";

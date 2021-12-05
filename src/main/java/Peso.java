@@ -1,5 +1,3 @@
-package main.java;
-
 public class Peso implements Divisa{
 
     private static float equivalencia = (float)1;

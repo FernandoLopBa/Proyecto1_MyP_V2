@@ -1,6 +1,7 @@
-package main.java;
+
 public interface InterfazBanco{
 
-    public void saca(double monto);
+    public boolean saca(double monto);
+    public void mete(double monto);
 
 }

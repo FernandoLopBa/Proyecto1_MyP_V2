@@ -1,5 +1,3 @@
-package main.java;
-
 import java.util.LinkedList;
 
 public interface Idioma {
@@ -8,7 +6,8 @@ public interface Idioma {
 
     public String completarCompra(boolean correcta);
 
-    public String depedir(CuentaCliente cliente);
+    public String despedir(CuentaCliente cliente);
+
 
     public String fechaEntrega(int[] fecha);
 

@@ -1,5 +1,3 @@
-package main.java;
-
 public interface Divisa {
 
     public float getEquivalencia();

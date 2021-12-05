@@ -1,5 +1,3 @@
-package main.java;
-
 public class DepaComida extends Departamento{
 
 	private static String nombre = "Abarrotes";

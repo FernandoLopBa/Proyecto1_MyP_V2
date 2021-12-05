@@ -1,5 +1,5 @@
-package main.java;
 import java.util.Scanner;
+
 public class ClienteProxy implements InterfazBanco{
 
     private Tarjeta tarjeta;
@@ -8,14 +8,22 @@ public class ClienteProxy implements InterfazBanco{
         this.tarjeta = tarjeta;
     }
 
-    public void saca(double monto){
+    public boolean saca(double monto){
         Scanner sc = new Scanner(System.in);
         System.out.print("Ingresa la clave de tu tarjeta: ");
         String clave = sc.nextLine();
-        if(clave.equals(tarjeta.getContrasena()))
-        tarjeta.saca(monto);
+        if(tarjeta.getContrasena().equals(clave)){
+            sc.close();
+            return tarjeta.saca(monto);
+            
+        }        
+        System.out.println("Emergencia 911 hombre con ataque cardiaco");
         sc.close();
+        return false;
+    }
 
+    public void mete(double monto){
+        tarjeta.mete(monto);
     }
 
 }

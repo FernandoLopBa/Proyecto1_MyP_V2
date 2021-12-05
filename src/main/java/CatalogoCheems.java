@@ -1,11 +1,13 @@
-package main.java;
+import java.util.Iterator;
 
-public class CatalogoCheems {
+public class CatalogoCheems extends Catalogo{
    
     private Catalogo catalogo;
 
     public CatalogoCheems(){
         catalogo = new Catalogo();
+
+
         // Creamos una instancia de cada departamento.
         Departamento comida = new DepaComida();
         Departamento electronica = new DepaElectronica();
@@ -29,5 +31,14 @@ public class CatalogoCheems {
         catalogo.agrega(4890,"Lanpara","Mucha lus",9000,electrodomesticos);
         catalogo.agrega(6750,"Aspira a Dora","maquina de ruido infernal",5000,electrodomesticos);
     }
+
+    public String toString(){
+        return catalogo.toString();
+    }
+
+    public Iterator<Producto> getIterator(){
+        return catalogo.getIterator();
+    }
+
 
 }

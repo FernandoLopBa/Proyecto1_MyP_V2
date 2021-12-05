@@ -1,4 +1,3 @@
-package main.java;
 public class Producto{
     private int codigoBarras;
     private String nombre;
@@ -15,7 +14,7 @@ public class Producto{
         this.departamento = departamento;
     }
 
-    public long getCB(){
+    public int getCB(){
         return codigoBarras;
     }
 
@@ -37,7 +36,7 @@ public class Producto{
 
     public String toString(){
         return "- "+getCB()+"\t\t"+getNombre()+"\t\t"+
-        getDescripcion()+"\t\t"+getPrecio()+""+getDepartamento().getDepartamento();
+        getDescripcion()+"\t\t"+getPrecio()+"\t"+getDepartamento().getDepartamento()+"\n";
                                             //regresa el departamento, regresa el String
     }
 
@@ -48,6 +47,4 @@ public class Producto{
     public String getNombreDepartamento(){
         return departamento.getDepartamento();
     }
-
-
 }
