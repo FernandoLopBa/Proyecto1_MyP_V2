@@ -66,6 +66,8 @@ public abstract class Sucursal implements Sujeto{
                 }
             }
         }
+        this.notifica();
+        System.out.println("clientes notificados1");
     }
 
     public void reiniciaDescuentos(){
@@ -161,15 +163,20 @@ public abstract class Sucursal implements Sujeto{
 
     public void notifica(){
         Iterator<Producto> it = catalogo.values().iterator();
+        System.out.println("clientes notificados-----");
+
         while(it.hasNext()){
             Producto p = it.next();
             if(p.getDescuento() > 0){
                 for(CuentaCliente c : clientes){
-                    System.out.println(c.getNombreReal() + ", tenemos ofertas en "
-                    + p.getNombre() + " del " + p.getDescuento() + "%%");
+                    //System.out.println(c.getNombreReal() + ", tenemos ofertas en "
+                    //+ p.getNombre() + " del " + p.getDescuento() + "%%");
+                    c.actualiza(c.getNombreReal() + ", tenemos ofertas en "
+                    + p.getNombre() + " del " + p.getDescuento() + "%%" );
                 }
             }
         }
+        System.out.println("clientes notificados");
     }
 
 }

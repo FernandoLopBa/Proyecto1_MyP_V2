@@ -1,6 +1,6 @@
 import java.util.Iterator;
 //import java.util.Scanner;
-public class CuentaCliente{
+public class CuentaCliente implements Observador{
 
     private String nombreUsuario;
     private String contrasena;
@@ -26,7 +26,7 @@ public class CuentaCliente{
         this.pais= c.getPais();
         this.direccion = c.getDireccion();
         
-        this.nombreReal = nombreUsuario;
+        this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.noCuenta = noCuenta;
         this.saldo = saldo;
@@ -50,8 +50,13 @@ public class CuentaCliente{
         carrito.elimina(producto);
     }
 
+    @Override
     public void actualiza(String oferta){
         this.oferta= oferta;
+    }
+
+    public String mostrarOferta(){
+        return oferta;
     }
 
  
@@ -116,7 +121,7 @@ public class CuentaCliente{
         System.out.println(mostrarCarro(divisa));
 
         System.out.println("\t\t\t\t"+cambio2);
-        System.out.println("PIN: "+getNoCuenta());
+       // System.out.println("PIN: "+getNoCuenta());
         //pero hacemos las cuentas con el dinero "real"
         InterfazProxy proxy = new Proxy(new Tarjeta());
         boolean exito = proxy.saca(this, total);

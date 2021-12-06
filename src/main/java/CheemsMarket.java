@@ -62,10 +62,9 @@ public class CheemsMarket {
 
             //
             
-            System.out.println(cliente);
-            System.out.println(sucursal);
-
-            //sucursal.registrar(cliente);
+            //System.out.println(cliente);
+            //System.out.println(sucursal);
+            sucursal.registrar(cliente);
         
             System.out.println(sucursal.saludar(cliente));
             String intento;
@@ -81,8 +80,10 @@ public class CheemsMarket {
             }
 
             sucursal.cargaCheems();
-            
             sucursal.creaDescuentos();
+            
+
+            System.out.println(cliente.mostrarOferta() );
                 
             while(eleccion != 0){
                 System.out.println(sucursal.menuInicio());

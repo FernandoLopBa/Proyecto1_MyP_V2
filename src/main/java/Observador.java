@@ -1,3 +1,3 @@
 public interface Observador{
-    public void actualiza();
+    public void actualiza(String oferta);
 }
