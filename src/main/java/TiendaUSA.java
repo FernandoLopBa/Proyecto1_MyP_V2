@@ -9,6 +9,10 @@ import java.util.LinkedList;
  */
 public class TiendaUSA extends Sucursal{
 
+    /**
+	 * Constructor de la clase TiendaUSA
+     * Manda a llamar carga de la clase padre para crear el catalogo
+     */
    public TiendaUSA() {
         idioma = new English();
 		moneda = new DollarUSD();
@@ -16,24 +20,22 @@ public class TiendaUSA extends Sucursal{
 		super.carga(new CatalogoCheems());
 	}
   
+    /**
+     * Crea los descuentos de electronica
+     */
     @Override
     public void creaDescuentos(){
         super.reiniciaDescuentos();
         super.crearDescuentos("Electronica");
     }
 
+    /**
+     * Regresa la divisa
+     * @return la divisa
+     */
     @Override
     public Divisa getDivisa(){
         return moneda;
-    }
-
-
-	public void notifica(){
-        if(descuento >0){
-            for(CuentaCliente c: clientes){
-                c.actualiza("Tenemos descuento en electronica!");
-            }
-        }
     }
 
 }

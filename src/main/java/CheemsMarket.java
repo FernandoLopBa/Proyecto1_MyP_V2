@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.LinkedList;
 
 public class CheemsMarket {
     /**Creacion de los clientes */
@@ -17,13 +18,29 @@ public class CheemsMarket {
     private static CuentaCliente cuentaRicardo = new CuentaCliente(ricardo, 
     "Ricchie", "misterio123", "lamassegura", 9000);
 
-        
+    /* Creación de las sucursales. */
+    //private static Sucursal tiendaMx = new TiendaMexico();
+    //private static Sucursal tiendaUSA = new TiendaUSA();
+    //private static Sucursal tiendaEs = new TiendaEspana();
+    
+    //private static LinkedList<Sucursal> sucursales = new LinkedList<>();
+
+
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         int eleccion;
         CuentaCliente cliente = null;
         Sucursal sucursal = null;
-        
+
+        //tiendaMx.registrar(cuentaRosa);
+        //tiendaEs.registrar(cuentaArturo);
+        //tiendaUSA.registrar(cuentaRicardo);
+
+        //sucursales.add(tiendaEs);
+        //sucursales.add(tiendaMx);
+        //sucursales.add(tiendaUSA);
+
+        //actualizaSucursales();
         
         do{
             System.out.println("\n¡¡¡BIENVENID@ A CHEEMSMART!!!\n");
@@ -64,7 +81,14 @@ public class CheemsMarket {
             
             //System.out.println(cliente);
             //System.out.println(sucursal);
+            //sucursal.registrar(cliente);
             sucursal.registrar(cliente);
+            //sucursal.registrar(cuentaArturo);
+            
+            sucursal.cargaCheems();
+
+            sucursal.creaDescuentos();
+            
         
             System.out.println(sucursal.saludar(cliente));
             String intento;
@@ -79,8 +103,8 @@ public class CheemsMarket {
                     break;
             }
 
-            sucursal.cargaCheems();
-            sucursal.creaDescuentos();
+            //sucursal.cargaCheems();
+            //sucursal.creaDescuentos();
             
 
             System.out.println(cliente.mostrarOferta() );
@@ -109,4 +133,11 @@ public class CheemsMarket {
             eleccion = 1;
         }while(eleccion != 0);
     }
+
+/*    private static void actualizaSucursales(){
+        for(Sucursal s : sucursales){
+            s.cargaCheems();
+            s.creaDescuentos();
+        }
+    }*/
 }

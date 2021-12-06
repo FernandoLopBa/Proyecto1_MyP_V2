@@ -16,27 +16,51 @@ public class Producto{
         this.precio = precio;
         this.departamento = departamento;
     }
-
+    
+    /**
+     * Regresa el codigo de barras del prodcuto
+     * @return el codigo de barras
+     */
     public int getCB(){
         return codigoBarras;
     }
 
+    /**
+     * Regresa el nombre del prodcuto
+     * @return el nombre del producto
+     */
     public String getNombre(){
         return nombre;
     }
 
+    /**
+     * Regresa la descripcion del producto
+     * @return la descripcion del producto
+     */
     public String getDescripcion(){
         return descripcion;
     }
 
+    /**
+     * Regresa el precio del producto
+     * @return el precio del producto  
+     */
     public int getPrecio(){
         return precio;
     }
 
+    /**
+     * Regresa el departamento del prodcuto
+     * @return el departamento
+     */
     public Departamento getDepartamento(){
         return departamento;
     }
 
+    /**
+     * Regresa el descuento del producto
+     * @return el descuento
+     */
     public int getDescuento(){
         return descuento;
     }
@@ -65,12 +89,11 @@ public class Producto{
     }
 
     public String mostrarProducto(Divisa divisa){
-	    return String.format("-%s\t%s\t%s\t%s%s\t%s\t\t%s",
+	    return String.format("-%s\t%s\t%s\t%s%s\t%s",
 		getCB(), 
         getNombre(), 
         getDescripcion(), 
         divisa.getEquivalenciaCadena(getPrecio()), 
-        "",        
         oferta(divisa), 
         departamento.getDepartamento());
     }

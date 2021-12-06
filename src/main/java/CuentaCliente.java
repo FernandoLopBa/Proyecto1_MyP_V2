@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.LinkedList;
 //import java.util.Scanner;
 public class CuentaCliente implements Observador{
 
@@ -13,8 +14,6 @@ public class CuentaCliente implements Observador{
     private float saldo;
 
     private String oferta = "";
-
-    //private Tarjeta tarjeta;
 
     private String noCuenta;
     private Carrito carrito;
@@ -51,9 +50,12 @@ public class CuentaCliente implements Observador{
     }
 
     @Override
-    public void actualiza(String oferta){
-        this.oferta= oferta;
+    public void actualiza(LinkedList<Producto> ofertas, Idioma idioma){
+        for(Producto p : ofertas){
+            System.out.println(idioma.mostrarOferta(nombreReal, p.getNombre(), p.getDescuento()));
+        }
     }
+
 
     public String mostrarOferta(){
         return oferta;
@@ -118,9 +120,10 @@ public class CuentaCliente implements Observador{
         }
         //solo pa mostrar el total en la respectiva divisa
         float cambio2 = divisa.getEquivalencia(total);
+
         System.out.println(mostrarCarro(divisa));
 
-        System.out.println("\t\t\t\t"+cambio2);
+        //System.out.println("\t\t\t\t"+cambio2);
        // System.out.println("PIN: "+getNoCuenta());
         //pero hacemos las cuentas con el dinero "real"
         InterfazProxy proxy = new Proxy(new Tarjeta());

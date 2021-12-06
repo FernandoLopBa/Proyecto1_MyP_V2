@@ -1,6 +1,6 @@
 public class DepaElectrodomestico extends Departamento{
 
-    public static String nombre = "Electrodomésticos";
+    public static String nombre = "Electrodomesticos";
 
     private int descuento;
 

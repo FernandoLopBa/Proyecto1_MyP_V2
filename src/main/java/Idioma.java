@@ -20,7 +20,7 @@ public interface Idioma {
 
     public String fechaEntrega(int[] fecha);
 
-    public String mostrarOfertas(LinkedList<Producto> ofertas);
+    public String mostrarOferta(String nombre, String producto, int descuento);
 
     public String comprar();
 }

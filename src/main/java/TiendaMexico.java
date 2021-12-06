@@ -11,6 +11,7 @@ public class TiendaMexico extends Sucursal{
 
 	/**
 	 * Constructor de la clase TiendaMexico
+     * Manda a llamar carga de la clase padre para crear el catalogo
 	 */
     public TiendaMexico() {
         idioma = new Espanol();
@@ -19,12 +20,19 @@ public class TiendaMexico extends Sucursal{
 		super.carga(new CatalogoCheems());
 	}
     
+    /**
+     * Crea los descuentos de Comida
+     */
     @Override
     public void creaDescuentos(){
         super.reiniciaDescuentos();
         super.crearDescuentos("Abarrotes");
     }
 
+    /**
+     * Regresa la divisa
+     * @return la divisa
+     */
     @Override
     public Divisa getDivisa(){
         return moneda;

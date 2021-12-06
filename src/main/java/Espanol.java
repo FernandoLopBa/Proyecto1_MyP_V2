@@ -15,7 +15,7 @@ public class Espanol implements Idioma{
 
     @Override
     public String eleccion(){
-	return "Introduzca su elección: ";
+	    return "Introduzca su elección: ";
     }
 
     @Override
@@ -57,12 +57,13 @@ public class Espanol implements Idioma{
     }
 
     @Override
-    public String mostrarOfertas(LinkedList<Producto> ofertas) {
-        return "";
+    public String mostrarOferta(String nombre, String producto, int descuento) {
+        return String.format("%s, Tenemos %d%% de descuento en %s",
+		    nombre, descuento, producto);
     }
 
     @Override
     public String comprar(){
-        return "Escoge tus productos: ";
+        return "Escoge tus productos y 0 para finalizar : ";
     }
 }

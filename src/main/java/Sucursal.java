@@ -16,12 +16,14 @@ public abstract class Sucursal implements Sujeto{
     protected LinkedList<CuentaCliente> clientes;    
     protected Hashtable<Integer, Producto> catalogo;
 
+    protected LinkedList<Producto> ofertas = new LinkedList<>();
+
     protected int descuento;
 
     protected Idioma idioma;
     protected Divisa moneda;
 
-    private static int[] fecha = {2, 11, 2021};
+    private static int[] fecha = {6, 11, 2021};
 
     public abstract Divisa getDivisa();
 
@@ -42,7 +44,6 @@ public abstract class Sucursal implements Sujeto{
             Producto p = it.next();
             catalogo.put(p.getCB(), p);
         }
-
     }
 
     public abstract void creaDescuentos();
@@ -57,18 +58,21 @@ public abstract class Sucursal implements Sujeto{
                 if(descuento % 3 == 0){
                     descuento = (int)(Math.random()*10+1)*5;
                     p.setDescuento(descuento);
+                    ofertas.add(p);
                 }
             }else{
                 descuento = (int)(Math.random()*3);
                 if(descuento % 7 == 0){
                     descuento = (int)(Math.random()*10+1)*5;
                     p.setDescuento(descuento);
+                    ofertas.add(p);
                 }
             }
         }
         this.notifica();
-        System.out.println("clientes notificados1");
+        System.out.println("Metodo crear descuentos");
     }
+
 
     public void reiniciaDescuentos(){
         Iterator<Producto> it = catalogo.values().iterator();
@@ -76,6 +80,7 @@ public abstract class Sucursal implements Sujeto{
             Producto p = it.next();
             p.setDescuento(0);
         }
+        ofertas.clear();;
     }
 
     public void cargaCheems(){
@@ -149,10 +154,6 @@ public abstract class Sucursal implements Sujeto{
         return idioma.fechaEntrega(fecha);
     }
 
-    public String mostrarOfertas(LinkedList<Producto> ofertas){
-        return idioma.mostrarOfertas(ofertas);
-    }
-
     public void registrar(CuentaCliente cliente){
         clientes.add(cliente);
     }
@@ -162,21 +163,12 @@ public abstract class Sucursal implements Sujeto{
     }
 
     public void notifica(){
-        Iterator<Producto> it = catalogo.values().iterator();
-        System.out.println("clientes notificados-----");
-
+        System.out.println("Metodo notifica");
+        Iterator<CuentaCliente> it = clientes.iterator();
         while(it.hasNext()){
-            Producto p = it.next();
-            if(p.getDescuento() > 0){
-                for(CuentaCliente c : clientes){
-                    //System.out.println(c.getNombreReal() + ", tenemos ofertas en "
-                    //+ p.getNombre() + " del " + p.getDescuento() + "%%");
-                    c.actualiza(c.getNombreReal() + ", tenemos ofertas en "
-                    + p.getNombre() + " del " + p.getDescuento() + "%%" );
-                }
-            }
+            CuentaCliente cliente = it.next();
+            cliente.actualiza(ofertas, idioma);
         }
-        System.out.println("clientes notificados");
     }
 
 }
