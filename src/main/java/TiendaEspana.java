@@ -18,10 +18,4 @@ public class TiendaEspana extends Sucursal{
         return moneda;
     }
 
-	public void aplicaDesc(){
-        
-    }
-
-	public void notifica(){}
-
 }

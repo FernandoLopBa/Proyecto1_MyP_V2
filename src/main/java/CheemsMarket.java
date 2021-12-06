@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class CheemsMart {
+public class CheemsMarket {
     /**Creacion de los clientes */
     private static Cliente rosa = new Cliente("Rosa",551311767,
     "Tennyson 133, Polanco, Miguel Hidalgo, 11570, Ciudad de México, CDMX", "Mexico");
@@ -93,6 +93,7 @@ public class CheemsMart {
             }
 
             sucursal.cargaCheems();
+            
             sucursal.creaDescuentos();
                 
             while(eleccion != 0){
@@ -101,7 +102,7 @@ public class CheemsMart {
                 eleccion = in.nextInt();
                 switch(eleccion){
                     case 1: 
-                        System.ou.println(sucursal.getCatalogo());
+                        System.out.println(sucursal.getCatalogo());
                         break;
                     case 2:
                         sucursal.comprar(cliente);
