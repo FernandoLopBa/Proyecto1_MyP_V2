@@ -14,8 +14,14 @@ public class TiendaEspana extends Sucursal{
 	}
    
     @Override
+    public void creaDescuentos(){
+        super.reiniciaDescuentos();
+        super.crearDescuentos("Electrodomesticos");
+    }
+
+    @Override
     public Divisa getDivisa(){
         return moneda;
-    }
+    }   
 
 }

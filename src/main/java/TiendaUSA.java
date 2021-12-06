@@ -15,13 +15,16 @@ public class TiendaUSA extends Sucursal{
 	}
   
     @Override
+    public void creaDescuentos(){
+        super.reiniciaDescuentos();
+        super.crearDescuentos("Electronica");
+    }
+
+    @Override
     public Divisa getDivisa(){
         return moneda;
     }
 
-	public void aplicaDesc(){
-        
-    }
 
 	public void notifica(){
         if(descuento >0){

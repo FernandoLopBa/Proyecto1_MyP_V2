@@ -66,8 +66,14 @@ public class Producto{
 
     public String mostrarProducto(Divisa divisa){
 	    return String.format("-%s\t%s\t%s\t%s%s\t%s\t\t%s",
-		getCB(), getNombre(), getDescripcion(), 
-        divisa.getEquivalenciaCadena(getPrecio()), oferta(divisa), 
+		getCB(), 
+        getNombre(), 
+        getDescripcion(), 
+        divisa.getEquivalenciaCadena(getPrecio()), 
+        "",        
+        oferta(divisa), 
         departamento.getDepartamento());
     }
+    //cb, nombre, descrip, precio 
+    //
 }

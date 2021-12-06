@@ -68,7 +68,7 @@ public abstract class Sucursal implements Sujeto{
         }
     }
 
-    public void reiiciaDescuentos(){
+    public void reiniciaDescuentos(){
         Iterator<Producto> it = catalogo.values().iterator();
         while(it.hasNext()){
             Producto p = it.next();
