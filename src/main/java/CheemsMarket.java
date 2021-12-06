@@ -11,25 +11,12 @@ public class CheemsMarket {
     
     /**Creacion de las cuentas */
     private static CuentaCliente cuentaRosa = new CuentaCliente(rosa, 
-    "Tsunakidevilla", "contrasenadeCuenta", "123456", 500);
+    "Tsunakidevilla", "contrasenadeCuenta", "123456", 5000);
     private static CuentaCliente cuentaArturo = new CuentaCliente(arturo,
-    "R2D2", "cuenta123", "clave123", 800);
+    "R2D2", "cuenta123", "clave123", 8000);
     private static CuentaCliente cuentaRicardo = new CuentaCliente(ricardo, 
-    "Ricchie", "misterio123", "lamassegura", 900);
+    "Ricchie", "misterio123", "lamassegura", 9000);
 
-    /**Creacion de las tarjetas */
-    /*private static Tarjeta tarjetaRosa = new Tarjeta(10500, "clave");    
-    private static Tarjeta tarjetaArturo = new Tarjeta(9000, "123456789");
-    private static Tarjeta tarjetaRicardo = new Tarjeta(5000, "lasmassegura");
-    */
-    /**Vinculacion de las cuentas con la tarjetas */
-    /*private static void vincula(){
-        cuentaRosa.vincula(tarjetaRosa);
-        cuentaArturo.vincula(tarjetaArturo);
-        cuentaRicardo.vincula(tarjetaRicardo);
-    }
-*/
-        
         
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
@@ -37,7 +24,6 @@ public class CheemsMarket {
         CuentaCliente cliente = null;
         Sucursal sucursal = null;
         
-        //vincula();
         
         do{
             System.out.println("\n¡¡¡BIENVENID@ A CHEEMSMART!!!\n");

@@ -13,6 +13,7 @@ public class Proxy implements InterfazProxy{
         String clave = sc.nextLine();
         if(cuenta.getNoCuenta().equals(clave)){
             return tarjeta.saca(cuenta, monto);
+            
         }        
         //sc.close();
         return false;

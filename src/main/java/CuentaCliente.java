@@ -87,35 +87,42 @@ public class CuentaCliente{
         this.saldo = saldo;
     }
 
-    public String mostrarCarro(){
+    public String mostrarCarro(Divisa divisa){
         String res = "";
         Iterator<Producto> it = carrito.getIterator();
         while(it.hasNext()){
             Producto p = it.next();
-            res+=p.toString();
+            res+=p.mostrarProducto((divisa))+"\n";
         }
         return res;
 
     }
 
     public boolean paga(Divisa divisa){
-        float real = divisa.getEquivalencia(saldo);
-        System.out.println("$"+real);
-        //el precio total de las cosas
+        //mustra el cambio devuelto
+        float cambio = divisa.getEquivalencia(saldo);
+        System.out.println("Antes: "+cambio);
+
+        //el total de la compra
         float total = 0;
         Iterator<Producto> it = carrito.getIterator();
         while(it.hasNext()){
             Producto p = it.next();
-            total+=p.getPrecio();
+            if(p.getDescuento() > 0 ) total += p.precioPostDescuento();
+            else total += p.getPrecio();
         }
-        //el precio lo convertimos a la divisa
-        float res = divisa.getEquivalencia(total);
+        //solo pa mostrar el total en la respectiva divisa
+        float cambio2 = divisa.getEquivalencia(total);
+        System.out.println("Total: "+cambio2);
+        System.out.println("PIN: "+getNoCuenta());
+        //pero hacemos las cuentas con el dinero "real"
         InterfazProxy proxy = new Proxy(new Tarjeta());
-        //regresa verdadero si la compra fue exitosa
-        System.out.println("Total"+res);
-        boolean bandera = proxy.saca(this, res);
-        System.out.println("$"+real);
-        return bandera;
+        boolean exito = proxy.saca(this, total);
+        //mostramos el total
+        System.out.println("Ahora: "+divisa.getEquivalencia(saldo));
+        System.out.println(exito);
+        return exito;
+
     }   
 
 
