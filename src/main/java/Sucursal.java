@@ -96,6 +96,7 @@ public abstract class Sucursal implements Sujeto{
         }while(cb!=0);
         //sc.close();
         boolean bandera = cliente.paga(getDivisa()); //regresa un booleano
+        if(bandera) System.out.println(fechaEntrega());
         return completarCompra(bandera);
     }
 

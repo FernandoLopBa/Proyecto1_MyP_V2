@@ -93,7 +93,8 @@ public class CheemsMarket {
                         System.out.println(sucursal.getCatalogo());
                         break;
                     case 2:
-                        sucursal.comprar(cliente);
+                        String s = sucursal.comprar(cliente);
+                        System.out.println(s);
 
                         break;
                     case 0:

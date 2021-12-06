@@ -101,7 +101,7 @@ public class CuentaCliente{
     public boolean paga(Divisa divisa){
         //mustra el cambio devuelto
         float cambio = divisa.getEquivalencia(saldo);
-        System.out.println("Antes: "+cambio);
+//        System.out.println("Antes: "+cambio);
 
         //el total de la compra
         float total = 0;
@@ -113,21 +113,24 @@ public class CuentaCliente{
         }
         //solo pa mostrar el total en la respectiva divisa
         float cambio2 = divisa.getEquivalencia(total);
-        System.out.println("Total: "+cambio2);
+        System.out.println(mostrarCarro(divisa));
+
+        System.out.println("\t\t\t\t"+cambio2);
         System.out.println("PIN: "+getNoCuenta());
         //pero hacemos las cuentas con el dinero "real"
         InterfazProxy proxy = new Proxy(new Tarjeta());
         boolean exito = proxy.saca(this, total);
         //mostramos el total
-        System.out.println("Ahora: "+divisa.getEquivalencia(saldo));
-        System.out.println(exito);
+//        System.out.println("Ahora: "+divisa.getEquivalencia(saldo));
+//        System.out.println(exito);
+        carrito.vacia();
         return exito;
-
     }   
 
 
     public boolean checaContrasenia(String intento){
-	return contrasena.equals(intento);
+    	return contrasena.equals(intento);
     }
+
     
 }
