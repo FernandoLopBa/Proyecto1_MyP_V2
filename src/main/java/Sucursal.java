@@ -66,9 +66,11 @@ public abstract class Sucursal implements Sujeto{
                 }
             }
         }
+        this.notifica();
+        System.out.println("clientes notificados1");
     }
 
-    public void reiiciaDescuentos(){
+    public void reiniciaDescuentos(){
         Iterator<Producto> it = catalogo.values().iterator();
         while(it.hasNext()){
             Producto p = it.next();
@@ -96,6 +98,7 @@ public abstract class Sucursal implements Sujeto{
         }while(cb!=0);
         //sc.close();
         boolean bandera = cliente.paga(getDivisa()); //regresa un booleano
+        if(bandera) System.out.println(fechaEntrega());
         return completarCompra(bandera);
     }
 
@@ -160,15 +163,20 @@ public abstract class Sucursal implements Sujeto{
 
     public void notifica(){
         Iterator<Producto> it = catalogo.values().iterator();
+        System.out.println("clientes notificados-----");
+
         while(it.hasNext()){
             Producto p = it.next();
             if(p.getDescuento() > 0){
                 for(CuentaCliente c : clientes){
-                    System.out.println(c.getNombreReal() + ", tenemos ofertas en "
-                    + p.getNombre() + " del " + p.getDescuento() + "%%");
+                    //System.out.println(c.getNombreReal() + ", tenemos ofertas en "
+                    //+ p.getNombre() + " del " + p.getDescuento() + "%%");
+                    c.actualiza(c.getNombreReal() + ", tenemos ofertas en "
+                    + p.getNombre() + " del " + p.getDescuento() + "%%" );
                 }
             }
         }
+        System.out.println("clientes notificados");
     }
 
-}n
+}

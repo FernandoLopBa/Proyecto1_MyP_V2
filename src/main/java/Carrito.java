@@ -18,6 +18,10 @@ public class Carrito{
         productos.remove(producto);
     }
 
+    public void vacia(){
+        productos.clear();
+    }
+
     public Iterator<Producto> getIterator(){
         return productos.iterator();
     }

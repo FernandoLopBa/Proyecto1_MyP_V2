@@ -1,6 +1,6 @@
 import java.util.Iterator;
-import java.util.Scanner;
-public class CuentaCliente{
+//import java.util.Scanner;
+public class CuentaCliente implements Observador{
 
     private String nombreUsuario;
     private String contrasena;
@@ -26,7 +26,7 @@ public class CuentaCliente{
         this.pais= c.getPais();
         this.direccion = c.getDireccion();
         
-        this.nombreReal = nombreUsuario;
+        this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.noCuenta = noCuenta;
         this.saldo = saldo;
@@ -50,8 +50,13 @@ public class CuentaCliente{
         carrito.elimina(producto);
     }
 
+    @Override
     public void actualiza(String oferta){
         this.oferta= oferta;
+    }
+
+    public String mostrarOferta(){
+        return oferta;
     }
 
  
@@ -87,40 +92,50 @@ public class CuentaCliente{
         this.saldo = saldo;
     }
 
-    public String mostrarCarro(){
+    public String mostrarCarro(Divisa divisa){
         String res = "";
         Iterator<Producto> it = carrito.getIterator();
         while(it.hasNext()){
             Producto p = it.next();
-            res+=p.toString();
+            res+=p.mostrarProducto((divisa))+"\n";
         }
         return res;
 
     }
 
     public boolean paga(Divisa divisa){
-        float real = divisa.getEquivalencia(saldo);
-        System.out.println("$"+real);
-        //el precio total de las cosas
+        //mustra el cambio devuelto
+        float cambio = divisa.getEquivalencia(saldo);
+//        System.out.println("Antes: "+cambio);
+
+        //el total de la compra
         float total = 0;
         Iterator<Producto> it = carrito.getIterator();
         while(it.hasNext()){
             Producto p = it.next();
-            total+=p.getPrecio();
+            if(p.getDescuento() > 0 ) total += p.precioPostDescuento();
+            else total += p.getPrecio();
         }
-        //el precio lo convertimos a la divisa
-        float res = divisa.getEquivalencia(total);
+        //solo pa mostrar el total en la respectiva divisa
+        float cambio2 = divisa.getEquivalencia(total);
+        System.out.println(mostrarCarro(divisa));
+
+        System.out.println("\t\t\t\t"+cambio2);
+       // System.out.println("PIN: "+getNoCuenta());
+        //pero hacemos las cuentas con el dinero "real"
         InterfazProxy proxy = new Proxy(new Tarjeta());
-        //regresa verdadero si la compra fue exitosa
-        System.out.println("Total"+res);
-        boolean bandera = proxy.saca(this, res);
-        System.out.println("$"+real);
-        return bandera;
+        boolean exito = proxy.saca(this, total);
+        //mostramos el total
+//        System.out.println("Ahora: "+divisa.getEquivalencia(saldo));
+//        System.out.println(exito);
+        carrito.vacia();
+        return exito;
     }   
 
 
     public boolean checaContrasenia(String intento){
-	return contrasena.equals(intento);
+    	return contrasena.equals(intento);
     }
+
     
 }

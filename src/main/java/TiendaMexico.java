@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 /**
  * Representa la sucursal en Mexico
  * @author Bernal Marquez Erick
@@ -13,6 +15,7 @@ public class TiendaMexico extends Sucursal{
     public TiendaMexico() {
         idioma = new Espanol();
 		moneda = new Peso();
+        clientes = new LinkedList<CuentaCliente>();
 		super.carga(new CatalogoCheems());
 	}
     
