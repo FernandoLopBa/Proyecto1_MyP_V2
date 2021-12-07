@@ -166,7 +166,8 @@ public class CuentaCliente implements Observador{
 
 
     /**
-     *
+     * Muestra el carrito del cliente con la divisa correspondiente
+     * @param divisa la divisa correspondiente a comprar
      */
     public String mostrarCarro(Divisa divisa){
         String res = "";
@@ -181,7 +182,9 @@ public class CuentaCliente implements Observador{
 
 
     /**
-     * 
+     * Paga con la divisa correspondiente
+     * @param divisa la divisa correspondiente
+     * @return true si la operacion fue exitosa
      */
     public boolean paga(Divisa divisa){
         //el total de la compra
@@ -193,17 +196,16 @@ public class CuentaCliente implements Observador{
             if(p.getDescuento() > 0 ) total += p.precioPostDescuento();
             else total += p.getPrecio();
         }
+
         //mostramos el carro
         System.out.println(mostrarCarro(divisa));
+        //mostramos el saldo del cliente menos el total
+        System.out.println("  "+divisa.getEquivalenciaCadena(saldo)+"\n"+
+                           " -"+divisa.getEquivalenciaCadena(total));  
         
-        //System.out.println("\t\t\t\t"+cambio2);
-        // System.out.println("PIN: "+getNoCuenta());
-        //pero hacemos las cuentas con el dinero "real"
+        //mandamos a llamar el proxy para verificar la compra
         InterfazProxy proxy = new Proxy(new Tarjeta());
         boolean exito = proxy.saca(this, total);
-        //mostramos el total
-//        System.out.println("Ahora: "+divisa.getEquivalencia(saldo));
-//        System.out.println(exito);
         carrito.vacia();
         return exito;
     }   

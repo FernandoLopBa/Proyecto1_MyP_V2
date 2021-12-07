@@ -67,29 +67,16 @@ public class CheemsMarket {
             }
 
             if(cliente.getPais() == "Mexico")
-                sucursal = new TiendaMexico();
+                sucursal = tiendaMx;
             else if(cliente.getPais() == "Espana")
-                sucursal = new TiendaEspana();
+                sucursal = tiendaEs;
             else if(cliente.getPais() == "USA")
-                sucursal = new TiendaUSA();
+                sucursal = tiendaUSA;
             else{
                 System.out.println("Lo sentimos, no tenemos sucursal disponible");
                 System.exit(0);
             }
 
-            //
-            
-            //System.out.println(cliente);
-            //System.out.println(sucursal);
-            //sucursal.registrar(cliente);
-            //sucursal.registrar(cliente);
-            //sucursal.registrar(cuentaArturo);
-            
-            //sucursal.cargaCheems();
-
-            //sucursal.creaDescuentos();
-            
-        
             System.out.println(sucursal.saludar(cliente));
             String intento;
             for(int i = 0; i < 3; i++){
@@ -103,12 +90,6 @@ public class CheemsMarket {
                     break;
             }
 
-            //sucursal.cargaCheems();
-            //sucursal.creaDescuentos();
-            
-
-            System.out.println(cliente.mostrarOferta() );
-                
             while(eleccion != 0){
                 System.out.println(sucursal.menuInicio());
                 System.out.print(sucursal.eleccion());
@@ -120,13 +101,11 @@ public class CheemsMarket {
                     case 2:
                         String s = sucursal.comprar(cliente);
                         System.out.println(s);
-
                         break;
                     case 0:
                         break;
                     default:
                         System.out.println(sucursal.eleccionInvalida());
-                        System.exit(0);
                 }
             }
             System.out.println(sucursal.despedir(cliente)+"\n");

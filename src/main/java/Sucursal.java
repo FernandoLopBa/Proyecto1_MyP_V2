@@ -90,6 +90,7 @@ public abstract class Sucursal implements Sujeto{
                 if(descuento % 7 == 0){
                     descuento = (int)(Math.random()*10+1)*5;
                     p.setDescuento(descuento);
+                    //En caso de querer únicamente las ofertas de ese departamento comentar esta línea.
                     ofertas.add(p);
                 }
             }
@@ -256,7 +257,7 @@ public abstract class Sucursal implements Sujeto{
      */
     @Override
     public void notifica(){
-        System.out.println("Metodo notifica");
+        System.out.println("");
         Iterator<CuentaCliente> it = clientes.iterator();
         while(it.hasNext()){
             CuentaCliente cliente = it.next();
