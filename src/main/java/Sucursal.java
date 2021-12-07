@@ -1,7 +1,7 @@
-import java.util.LinkedList;
 import java.lang.Math;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Scanner;
 /**
  * Representa la sucursal de tiendas Cheemsmart
@@ -154,14 +154,20 @@ public abstract class Sucursal implements Sujeto{
         return idioma.fechaEntrega(fecha);
     }
 
+
+    @Override
     public void registrar(CuentaCliente cliente){
         clientes.add(cliente);
     }
 
+
+    @Override
     public void elimina(CuentaCliente cliente){
         clientes.remove(cliente);
     }
 
+    
+    @Override
     public void notifica(){
         System.out.println("Metodo notifica");
         Iterator<CuentaCliente> it = clientes.iterator();

@@ -25,6 +25,7 @@ public class Producto{
         return codigoBarras;
     }
 
+
     /**
      * Regresa el nombre del prodcuto
      * @return el nombre del producto
@@ -32,6 +33,7 @@ public class Producto{
     public String getNombre(){
         return nombre;
     }
+
 
     /**
      * Regresa la descripcion del producto
@@ -41,6 +43,7 @@ public class Producto{
         return descripcion;
     }
 
+
     /**
      * Regresa el precio del producto
      * @return el precio del producto  
@@ -49,13 +52,6 @@ public class Producto{
         return precio;
     }
 
-    /**
-     * Regresa el departamento del prodcuto
-     * @return el departamento
-     */
-    public Departamento getDepartamento(){
-        return departamento;
-    }
 
     /**
      * Regresa el descuento del producto
@@ -65,22 +61,57 @@ public class Producto{
         return descuento;
     }
 
-    public float precioPostDescuento(){
-        return (float)(precio * (1-descuento*0.01));
+
+    /**
+     * Regresa el departamento del prodcuto
+     * @return el departamento
+     */
+    public Departamento getDepartamento(){
+        return departamento;
     }
 
+    
+    /**
+     * Cambia el precio del producto
+     * @param precio el nuevo precio del prodcuto
+     */
     public void setPrecio(int precio){
         this.precio = precio;
     }
 
+    
+    /**
+     * Cambia el descuento del producto
+     * @param descuento el nuevo descuento del prodcuto
+     */
     public void setDescuento(int descuento){
         this.descuento = descuento;
     }
 
+    
+    /**
+     * Regresa el nombre del despartamento
+     * @return el nombre del departamento
+     */
     public String getNombreDepartamento(){
         return departamento.getDepartamento();
     }
 
+
+    /**
+     * Regresa el precio del prodcuto con el descuento
+     * @return el precio del producto con el descuento
+     */
+    public float precioPostDescuento(){
+        return (float)(precio * (1-descuento*0.01));
+    }
+    
+
+    /**
+     * Regresa el el precio del prodcuto en la divisa correspondiente si es que tiene un descuento
+     * @param divisa la divisa para mostrar la oferta
+     * @return el precio del producto
+     */
     public String oferta(Divisa divisa){
         if(descuento > 0)
             return String.format(" => %s (-%d%%)!!!",
@@ -88,6 +119,12 @@ public class Producto{
         return "";
     }
 
+    
+    /**
+     * Regresa la representacion en cadena del producto con la divisa correspondiente
+     * @param divisa la divisa para mostrar el producto
+     * @param la representacion en cadena del producto
+     */
     public String mostrarProducto(Divisa divisa){
 	    return String.format("-%s\t%s\t%s\t%s%s\t%s",
 		getCB(), 
