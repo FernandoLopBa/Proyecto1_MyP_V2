@@ -1,3 +1,10 @@
+/**
+ * Una clase cliente xd no hay mas
+ * @author Bernal Marquez Erick
+ * @author Deloya Andrade Ana Valeria
+ * @author López Balcazar Fernando
+ * @version 1
+ */
 public class Cliente{
 
     private String nombre;
@@ -13,18 +20,38 @@ public class Cliente{
 
     }
 
+
+    /**
+     * Regresa el nombre del cliente
+     * @return el nombre del cliente
+     */
     public String getNombre(){
         return nombre;
     }
 
+
+    /**
+     * Regresa el telefono del cliente
+     * @return el telefono del cliente
+     */
     public int getTelefono(){
         return telefono;
     }
 
+
+    /** 
+     * Regresa la direccion del cliente
+     * @return la direccion del cliente
+     */
     public String getDireccion(){
         return direccion;
     }
 
+
+    /**
+     * Regresa el pais
+     * @return el pais
+     */
     public String getPais(){
         return pais;
     }
