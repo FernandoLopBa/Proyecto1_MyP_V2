@@ -19,11 +19,11 @@ public class CheemsMarket {
     "Ricchie", "misterio123", "lamassegura", 9000);
 
     /* Creación de las sucursales. */
-    //private static Sucursal tiendaMx = new TiendaMexico();
-    //private static Sucursal tiendaUSA = new TiendaUSA();
-    //private static Sucursal tiendaEs = new TiendaEspana();
+    private static Sucursal tiendaMx = new TiendaMexico();
+    private static Sucursal tiendaUSA = new TiendaUSA();
+    private static Sucursal tiendaEs = new TiendaEspana();
     
-    //private static LinkedList<Sucursal> sucursales = new LinkedList<>();
+    private static LinkedList<Sucursal> sucursales = new LinkedList<>();
 
 
     public static void main(String[] args){
@@ -32,15 +32,15 @@ public class CheemsMarket {
         CuentaCliente cliente = null;
         Sucursal sucursal = null;
 
-        //tiendaMx.registrar(cuentaRosa);
-        //tiendaEs.registrar(cuentaArturo);
-        //tiendaUSA.registrar(cuentaRicardo);
+        tiendaMx.registrar(cuentaRosa);
+        tiendaEs.registrar(cuentaArturo);
+        tiendaUSA.registrar(cuentaRicardo);
 
-        //sucursales.add(tiendaEs);
-        //sucursales.add(tiendaMx);
-        //sucursales.add(tiendaUSA);
+        sucursales.add(tiendaEs);
+        sucursales.add(tiendaMx);
+        sucursales.add(tiendaUSA);
 
-        //actualizaSucursales();
+        actualizaSucursales();
         
         do{
             System.out.println("\n¡¡¡BIENVENID@ A CHEEMSMART!!!\n");
@@ -82,12 +82,12 @@ public class CheemsMarket {
             //System.out.println(cliente);
             //System.out.println(sucursal);
             //sucursal.registrar(cliente);
-            sucursal.registrar(cliente);
+            //sucursal.registrar(cliente);
             //sucursal.registrar(cuentaArturo);
             
-            sucursal.cargaCheems();
+            //sucursal.cargaCheems();
 
-            sucursal.creaDescuentos();
+            //sucursal.creaDescuentos();
             
         
             System.out.println(sucursal.saludar(cliente));
@@ -134,10 +134,13 @@ public class CheemsMarket {
         }while(eleccion != 0);
     }
 
-/*    private static void actualizaSucursales(){
+    /**
+     * Actualiza las sucursales de la tienda CheemsMarket.
+     */
+    private static void actualizaSucursales(){
         for(Sucursal s : sucursales){
             s.cargaCheems();
             s.creaDescuentos();
         }
-    }*/
+    }
 }

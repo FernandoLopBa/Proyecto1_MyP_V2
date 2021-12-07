@@ -62,7 +62,7 @@ public class English implements Idioma{
      */
     @Override
     public String comprar(){
-        return "Choice your products  and 0 to finish: ";
+        return "Choice your products by barcode and 0 to finish: ";
     }
 
     /**

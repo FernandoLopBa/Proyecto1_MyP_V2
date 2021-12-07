@@ -28,7 +28,6 @@ public interface Idioma {
      */
     public String introduzcaContasena();
 
-
     /**
      * Muestra un mensaje de que el cliente puso mal la contrasena y 
      * el numero de intentos que le quedan

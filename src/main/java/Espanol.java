@@ -63,7 +63,7 @@ public class Espanol implements Idioma{
      */
     @Override
     public String comprar(){
-        return "Escoge tus productos y 0 para finalizar : ";
+        return "Escoge tus productos por codigo de barras y 0 para finalizar : ";
     }
 
     /**

@@ -134,6 +134,4 @@ public class Producto{
         oferta(divisa), 
         departamento.getDepartamento());
     }
-    //cb, nombre, descrip, precio 
-    //
 }
