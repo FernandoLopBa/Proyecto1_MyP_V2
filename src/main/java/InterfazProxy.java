@@ -1,3 +1,11 @@
+/**
+ * Interfaz para el manejo del dinero del cliente
+ * @author Bernal Marquez Erick
+ * @author Deloya Andrade Ana Valeria
+ * @author López Balcazar Fernando
+ * @version 1
+ */
+
 public interface InterfazProxy{
 
     /**

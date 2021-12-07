@@ -1,4 +1,12 @@
 import java.util.Scanner;
+/**
+ * Representante para manejar el dinero del cliente
+ * @author Bernal Marquez Erick
+ * @author Deloya Andrade Ana Valeria
+ * @author López Balcazar Fernando
+ * @version 1
+ */
+
 public class Proxy implements InterfazProxy{
     //Tarjeta que va a realizar las operaciones sobre el cliente
     Tarjeta tarjeta;
@@ -13,6 +21,7 @@ public class Proxy implements InterfazProxy{
      * @param monto el monto a sacar
      * @return true si tuvo suficiente saldo, false en otro caso
      */
+    @Override
     public boolean saca(CuentaCliente cuenta, float monto){
         Scanner sc = new Scanner(System.in);
         System.out.print("PIN: ");
@@ -32,6 +41,7 @@ public class Proxy implements InterfazProxy{
      * @param monto el monto a sacar
      * @return true si tuvo suficiente saldo, false en otro caso
      */
+    @Override
     public boolean mete(CuentaCliente cuenta, float monto){
         Scanner sc = new Scanner(System.in);
         System.out.print("PIN: ");

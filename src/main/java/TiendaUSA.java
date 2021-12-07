@@ -20,6 +20,7 @@ public class TiendaUSA extends Sucursal{
 		super.carga(new CatalogoCheems());
 	}
   
+    
     /**
      * Crea los descuentos de electronica
      */
@@ -29,6 +30,7 @@ public class TiendaUSA extends Sucursal{
         super.crearDescuentos("Electronica");
     }
 
+    
     /**
      * Regresa la divisa
      * @return la divisa

@@ -16,6 +16,7 @@ public class TiendaEspana extends Sucursal{
         super.carga(new CatalogoCheems());
 	}
 
+
     /**
      * Crea los descuentos en Electrodimesticos
      */
@@ -25,6 +26,7 @@ public class TiendaEspana extends Sucursal{
         super.crearDescuentos("Electrodomesticos");
     }
 
+    
     /**
      * Regresa la divisa
      * @return la divisa

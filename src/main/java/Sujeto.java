@@ -1,6 +1,11 @@
 /**
- * 
+ * Interfaz para el Sujeto
+ * @author Bernal Marquez Erick
+ * @author Deloya Andrade Ana Valeria
+ * @author López Balcazar Fernando
+ * @version 1
  */
+
 public interface Sujeto{
 
     /**

@@ -20,6 +20,7 @@ public class TiendaMexico extends Sucursal{
 		super.carga(new CatalogoCheems());
 	}
     
+    
     /**
      * Crea los descuentos de Comida
      */
@@ -28,6 +29,7 @@ public class TiendaMexico extends Sucursal{
         super.reiniciaDescuentos();
         super.crearDescuentos("Abarrotes");
     }
+    
 
     /**
      * Regresa la divisa

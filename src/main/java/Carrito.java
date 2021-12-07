@@ -1,6 +1,12 @@
-import java.util.LinkedList;
 import java.util.Iterator;
-
+import java.util.LinkedList;
+/**
+ * Un carrito de compras para el cliente
+ * @author Bernal Marquez Erick
+ * @author Deloya Andrade Ana Valeria
+ * @author López Balcazar Fernando
+ * @version 1
+ */
 public class Carrito{
     //una lista de productos
     private LinkedList<Producto> productos;
@@ -8,6 +14,7 @@ public class Carrito{
     public Carrito(){
         productos = new LinkedList<>();
     }
+
 
     /**
      * Agrega producto a la lista
@@ -18,6 +25,7 @@ public class Carrito{
         productos.add(producto);
     }
 
+
     /**
      * Eliminamos producto de la lista
      * @param producto el producto a eliminar
@@ -26,6 +34,7 @@ public class Carrito{
         productos.remove(producto);
     }
 
+
     /**
      * Devuelve un iterator para iterar el iterable
      * @return una instancia de Iterator
@@ -33,6 +42,7 @@ public class Carrito{
     public Iterator<Producto> getIterator(){
         return productos.iterator();
     }
+
 
     /**
      * Limpia la lista de productos

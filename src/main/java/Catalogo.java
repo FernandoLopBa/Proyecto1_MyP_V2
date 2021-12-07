@@ -1,6 +1,12 @@
 import java.util.Iterator;
 import java.util.LinkedList;
-
+/**
+ * Representa un catalogo para la sucursal
+ * @author Bernal Marquez Erick
+ * @author Deloya Andrade Ana Valeria
+ * @author López Balcazar Fernando
+ * @version 1
+ */
 public class Catalogo{
     //la lista de prodcutos del catalogo
     private LinkedList<Producto> productos;
@@ -39,6 +45,7 @@ public class Catalogo{
         productos.remove(p);
     }
 
+    
     /** 
      * Devuelve un iterador para iterar el iterable
      * @return una instancia de Iterator
@@ -52,6 +59,7 @@ public class Catalogo{
      * Representacion en cadena de un producto
      * @return la representacion en cadena
      */
+    @Override
     public String toString(){
         String res = "";
         Iterator<Producto> it = getIterator();

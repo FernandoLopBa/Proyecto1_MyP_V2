@@ -1,3 +1,11 @@
+/**
+ * Representa Tarjeta para manipular el dinero del cliente
+ * @author Bernal Marquez Erick
+ * @author Deloya Andrade Ana Valeria
+ * @author López Balcazar Fernando
+ * @version 1
+ */
+
 public class Tarjeta implements InterfazProxy{
 
     /**
@@ -6,6 +14,7 @@ public class Tarjeta implements InterfazProxy{
      * @param monto el monto a sacar
      * @return true si tuvo suficiente saldo, false en otro caso
      */
+    @Override
     public boolean saca(CuentaCliente cuenta, float monto){
         System.out.println(cuenta.getSaldo());
         System.out.println(monto);
@@ -23,6 +32,7 @@ public class Tarjeta implements InterfazProxy{
      * @param monto el monto a meter
      * @return true si la operacion fue exitosa
      */
+    @Override
     public boolean mete(CuentaCliente cuenta, float monto){
         cuenta.setSaldo(cuenta.getSaldo()+monto);
         return true;
